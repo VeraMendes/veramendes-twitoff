@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--add in title and also in app.py-->
+        <title> Twitoff!! - {{ title }} </title>
+        <!-- add a style sheet from picnicss.com -->
+        <link rel="stylesheet" href="https://unpkg.com/picnic">
+    </head>
+
+    <body>
+        <h1> Twitoff! </h1>
+
+        <style>
+            h1 {
+                font-size: 60px;
+                color: blue;
+                text-align:center;
+                font-family:Papyrus;
+                }
+        </style>
+
+    <hr width="70%">
+
+    <br>
+    <br>
+
+    <!-- put in a form to get user -->
+    <!--we're putting in a block here! -->
+    {% block content %}
+    <form action="/user" method="post">
+        <input type="text" name="user_name" placeholder="User to add">
+        <input type="submit" value="Add User">
+    </form>
+
+    <!-- add in a form to select users to compare -->
+    <form action="/compare" method="post">
+        <label for="user 1">User 1:</label>
+        <select name="user1">
+            {% for user in users %}
+            <option value="{{ user.name }}">{{ user.name }}</option>option>
+            {% endfor %}
+        </select>
+        <label for="user 2">User 2:</label>
+        <select name="user2">
+                {% for user in users %}
+                <option value="{{ user.name }}">{{ user.name }}</option>option>
+                {% endfor %}
+            </select>
+            <input type="text" name="tweet_text" placeholder="Tweet text to predict">
+            <input type="submit" value="Compare Users">
+    </form>
+
+    {% endblock %}
+
+    </body>
+
+    <style>
+        body {
+            background-color: #A4D4F6;
+        }
+    </style>
+    
+</html>
